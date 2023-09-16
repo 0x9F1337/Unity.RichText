@@ -85,7 +85,7 @@ namespace Unity.RichText
                     }
                     catch ( Exception ex )
                     {
-                        Console.WriteLine( $"[{DateTime.Now}] Parameter \"{param?.ToString() ?? "[UNKNOWN]"}\" with modifiers \"{modifiers.ToString()}\" caused an error and will be ignored: ", ex.Message );
+                        Console.WriteLine( $"[{DateTime.Now}] Parameter \"{param?.ToString() ?? "[UNKNOWN]"}\" with modifiers \"{modifiers.ToString()}\" caused an error and will be ignored: " + ex.ToString() );
                     }
                 }
             }
@@ -100,7 +100,6 @@ namespace Unity.RichText
                 UnityRichTextFlag.Href => new HRefText( param ),
                 UnityRichTextFlag.Align => new AlignText( param ),
                 UnityRichTextFlag.AllCaps => new AllCapsText(),
-                UnityRichTextFlag.Alpha => new AlphaText( param ),
                 UnityRichTextFlag.CSpace => new CSpaceText( param ),
                 UnityRichTextFlag.Font => new FontText( param ),
                 UnityRichTextFlag.FontWeight => new FontWeightText( param ),
@@ -114,7 +113,6 @@ namespace Unity.RichText
                 UnityRichTextFlag.MSpace => new MSpaceText( param ),
                 UnityRichTextFlag.Nobr => new NoBreakText(),
                 UnityRichTextFlag.NoParse => new NoParseText(),
-                UnityRichTextFlag.Pos => new PosText( param ),
                 UnityRichTextFlag.Rotate => new RotateText( param ),
                 UnityRichTextFlag.Crossed => new CrossedText(),
                 UnityRichTextFlag.Size => new SizeText( param ),
@@ -126,7 +124,6 @@ namespace Unity.RichText
                 UnityRichTextFlag.Subscript => new SubscriptText(),
                 UnityRichTextFlag.Superscript => new SuperscriptText(),
                 UnityRichTextFlag.Underline => new UnderlineText(),
-                UnityRichTextFlag.VOffset => new VOffsetText( param ),
                 UnityRichTextFlag.Width => new WidthText( param ),
                 _ => null,
             };
