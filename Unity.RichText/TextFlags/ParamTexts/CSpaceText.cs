@@ -1,14 +1,19 @@
 ﻿using Unity.RichText.TextFlags.Interfaces;
+using Unity.RichText.TextFlags.Parameters.Validators;
 
 namespace Unity.RichText.TextFlags.ParamTexts
 {
     internal class CSpaceText : ITextItem
     {
-        public string? Param { get; }
+        public string? Param { get; } = string.Empty;
 
         public CSpaceText( object param )
         {
-            this.Param = param.ToString();
+            var value = param?.ToString();
+
+            EmValidator.Validate( value );
+
+            this.Param = value;
         }
 
         public string CloseTag()

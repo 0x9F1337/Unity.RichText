@@ -1,14 +1,19 @@
 ﻿using Unity.RichText.TextFlags.Interfaces;
+using Unity.RichText.TextFlags.Parameters.Validators;
 
 namespace Unity.RichText.TextFlags.ParamTexts
 {
     internal class GradientText : ITextItem
     {
-        public string? Param { get; }
+        public string? Param { get; } = string.Empty;
 
         public GradientText( object param )
         {
-            this.Param = param.ToString();
+            var value = param?.ToString();
+
+            StringValidator.Validate( value );
+
+            this.Param = value;
         }
 
         public string CloseTag()
