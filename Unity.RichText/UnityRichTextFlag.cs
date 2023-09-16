@@ -1,0 +1,36 @@
+﻿namespace Unity.RichText
+{
+    [Flags]
+    public enum UnityRichTextFlag
+    {
+        None,
+        Bold,
+        Italic,
+        Lowercase,
+        Uppercase,
+        Nobr,
+        NoParse,
+        SRender,
+        Strikethrough,
+        Subscript,
+        Superscript,
+        Underline,
+        Href,
+        Color,
+        CSpace,
+        Font,
+        Indent,
+        LineHeight,
+        LineIndent,
+        Margin,
+        Mark,
+        MSpace,
+        Pos,
+        Rotate,
+        Space,
+        Sprite,
+        Style,
+        VOffset,
+        Width
+    }
+}
