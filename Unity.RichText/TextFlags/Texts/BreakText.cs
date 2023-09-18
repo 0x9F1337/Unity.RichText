@@ -2,6 +2,7 @@
 
 namespace Unity.RichText.TextFlags.Texts
 {
+    [TextItemIdentifier( UnityRichTextFlag.Break )]
     internal class BreakText : ITextItem
     {
         public string? Param => throw new NotImplementedException();

@@ -3,11 +3,18 @@ using Unity.RichText.TextFlags.Parameters.Validators;
 
 namespace Unity.RichText.TextFlags.ParamTexts
 {
-    internal class MarginText : ITextItem
+    [TextItemIdentifier( UnityRichTextFlag.Margin )]
+    internal class MarginText : ITextItem, IParam    
     {
-        public string? Param { get; } = string.Empty;
+        public string? Param { get; private set; } = string.Empty;
 
-        public MarginText( object param )
+        public string CloseTag()
+            => "</margin>";
+
+        public string OpenTag()
+            => $"<margin={this.Param}>";
+
+        public void SetParam( object param )
         {
             var value = param?.ToString();
 
@@ -15,11 +22,5 @@ namespace Unity.RichText.TextFlags.ParamTexts
 
             this.Param = value;
         }
-
-        public string CloseTag()
-            => "</margin>";
-
-        public string OpenTag()
-            => $"<margin={this.Param}>";
     }
 }

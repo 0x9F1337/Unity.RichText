@@ -8,11 +8,18 @@ using Unity.RichText.TextFlags.Parameters.Validators;
 
 namespace Unity.RichText.TextFlags.ParamTexts
 {
-    internal class AlignText : ITextItem
+    [TextItemIdentifier(UnityRichTextFlag.Align)]
+    internal class AlignText : ITextItem, IParam
     {
-        public string? Param { get; } = string.Empty;
+        public string? Param { get; private set; } = string.Empty;
 
-        public AlignText( object param )
+        public string CloseTag()
+            => "</align>";
+
+        public string OpenTag()
+            => $"<align=\"{this.Param}\">";
+
+        public void SetParam( object param )
         {
             var value = param?.ToString();
 
@@ -20,11 +27,5 @@ namespace Unity.RichText.TextFlags.ParamTexts
 
             this.Param = value;
         }
-
-        public string CloseTag()
-            => "</align>";
-
-        public string OpenTag()
-            => $"<align=\"{this.Param}\">";
     }
 }

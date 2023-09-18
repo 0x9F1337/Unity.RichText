@@ -2,6 +2,7 @@
 
 namespace Unity.RichText.TextFlags.Texts
 {
+    [TextItemIdentifier( UnityRichTextFlag.Lowercase )]
     internal class LowerCaseText : ITextItem
     {
         public string? Param => throw new NotImplementedException();

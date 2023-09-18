@@ -3,11 +3,18 @@ using Unity.RichText.TextFlags.Parameters.Validators;
 
 namespace Unity.RichText.TextFlags.ParamTexts
 {
-    internal class IndentText : ITextItem
+    [TextItemIdentifier( UnityRichTextFlag.Indent )]
+    internal class IndentText : ITextItem, IParam
     {
-        public string? Param { get; } = string.Empty;
+        public string? Param { get; private set; } = string.Empty;
 
-        public IndentText( object param )
+        public string CloseTag()
+            => "</indent>";
+
+        public string OpenTag()
+            => $"<indent={this.Param}>";
+
+        public void SetParam( object param )
         {
             var value = param?.ToString();
 
@@ -15,11 +22,5 @@ namespace Unity.RichText.TextFlags.ParamTexts
 
             this.Param = value;
         }
-
-        public string CloseTag()
-            => "</indent>";
-
-        public string OpenTag()
-            => $"<indent={this.Param}>";
     }
 }

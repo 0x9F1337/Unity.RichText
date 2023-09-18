@@ -2,6 +2,7 @@
 
 namespace Unity.RichText.TextFlags.Texts
 {
+    [TextItemIdentifier(UnityRichTextFlag.AllCaps)]
     internal class AllCapsText : ITextItem
     {
         public string? Param => throw new NotImplementedException();

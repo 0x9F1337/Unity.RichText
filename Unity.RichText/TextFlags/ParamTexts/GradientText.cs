@@ -3,11 +3,18 @@ using Unity.RichText.TextFlags.Parameters.Validators;
 
 namespace Unity.RichText.TextFlags.ParamTexts
 {
-    internal class GradientText : ITextItem
+    [TextItemIdentifier( UnityRichTextFlag.Gradient )]
+    internal class GradientText : ITextItem, IParam
     {
-        public string? Param { get; } = string.Empty;
+        public string? Param { get; private set; } = string.Empty;
 
-        public GradientText( object param )
+        public string CloseTag()
+            => "</gradient>";
+
+        public string OpenTag()
+            => $"<gradient=\"{this.Param}\">";
+
+        public void SetParam( object param )
         {
             var value = param?.ToString();
 
@@ -15,11 +22,5 @@ namespace Unity.RichText.TextFlags.ParamTexts
 
             this.Param = value;
         }
-
-        public string CloseTag()
-            => "</gradient>";
-
-        public string OpenTag()
-            => $"<gradient=\"{this.Param}\">";
     }
 }

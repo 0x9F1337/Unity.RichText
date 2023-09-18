@@ -3,11 +3,18 @@ using Unity.RichText.TextFlags.Parameters.Validators;
 
 namespace Unity.RichText.TextFlags.ParamTexts
 {
-    internal class ColorText : ITextItem
+    [TextItemIdentifier( UnityRichTextFlag.Color )]
+    internal class ColorText : ITextItem, IParam
     {
-        public string? Param { get; } = string.Empty;
+        public string? Param { get; private set; } = string.Empty;
 
-        public ColorText( object param )
+        public string CloseTag()
+            => "</color>";
+
+        public string OpenTag()
+            => $"<color=#{this.Param}>";
+
+        public void SetParam( object param )
         {
             var value = param?.ToString();
 
@@ -15,11 +22,5 @@ namespace Unity.RichText.TextFlags.ParamTexts
 
             this.Param = value;
         }
-
-        public string CloseTag()
-            => "</color>";
-
-        public string OpenTag()
-            => $"<color=#{this.Param}>";
     }
 }

@@ -3,11 +3,18 @@ using Unity.RichText.TextFlags.Parameters.Validators;
 
 namespace Unity.RichText.TextFlags.ParamTexts
 {
-    internal class SizeText : ITextItem
+    [TextItemIdentifier( UnityRichTextFlag.Size )]
+    internal class SizeText : ITextItem, IParam
     {
-        public string? Param { get; } = string.Empty;
+        public string? Param { get; private set; } = string.Empty;
 
-        public SizeText( object param )
+        public string CloseTag()
+            => "</size>";
+
+        public string OpenTag()
+            => $"<size={this.Param}>";
+
+        public void SetParam( object param )
         {
             var value = param?.ToString();
 
@@ -15,11 +22,5 @@ namespace Unity.RichText.TextFlags.ParamTexts
 
             this.Param = value;
         }
-
-        public string CloseTag()
-            => "</size>";
-
-        public string OpenTag()
-            => $"<size={this.Param}>";
     }
 }

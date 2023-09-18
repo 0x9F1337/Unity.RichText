@@ -2,6 +2,7 @@
 
 namespace Unity.RichText.TextFlags.Texts
 {
+    [TextItemIdentifier( UnityRichTextFlag.NoParse )]
     internal class NoParseText : ITextItem
     {
         public string? Param => throw new NotImplementedException();

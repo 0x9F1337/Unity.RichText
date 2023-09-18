@@ -3,11 +3,18 @@ using Unity.RichText.TextFlags.Parameters.Validators;
 
 namespace Unity.RichText.TextFlags.ParamTexts
 {
-    internal class LineIndentText : ITextItem
+    [TextItemIdentifier( UnityRichTextFlag.LineIndent )]
+    internal class LineIndentText : ITextItem, IParam
     {
-        public string? Param { get; } = string.Empty;
+        public string? Param { get; private set; } = string.Empty;
 
-        public LineIndentText( object param )
+        public string CloseTag()
+            => "</LineIndent>";
+
+        public string OpenTag()
+            => $"<LineIndent={this.Param}>";
+
+        public void SetParam( object param )
         {
             var value = param?.ToString();
 
@@ -15,11 +22,5 @@ namespace Unity.RichText.TextFlags.ParamTexts
 
             this.Param = value;
         }
-
-        public string CloseTag()
-            => "</LineIndent>";
-
-        public string OpenTag()
-            => $"<LineIndent={this.Param}>";
     }
 }

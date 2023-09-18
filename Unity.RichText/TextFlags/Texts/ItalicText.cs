@@ -7,6 +7,7 @@ using Unity.RichText.TextFlags.Interfaces;
 
 namespace Unity.RichText.TextFlags.Texts
 {
+    [TextItemIdentifier( UnityRichTextFlag.Italic )]
     internal class ItalicText : ITextItem
     {
         public string? Param => throw new NotImplementedException(); 

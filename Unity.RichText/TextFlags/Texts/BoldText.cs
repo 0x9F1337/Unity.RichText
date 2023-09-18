@@ -7,6 +7,7 @@ using Unity.RichText.TextFlags.Interfaces;
 
 namespace Unity.RichText.TextFlags.Texts
 {
+    [TextItemIdentifier( UnityRichTextFlag.Bold )]
     internal class BoldText : ITextItem
     {
         public string? Param => throw new NotImplementedException();    

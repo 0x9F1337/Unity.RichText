@@ -2,6 +2,7 @@
 
 namespace Unity.RichText.TextFlags.Texts
 {
+    [TextItemIdentifier( UnityRichTextFlag.Superscript )]
     internal class SuperscriptText : ITextItem
     {
         public string? Param => throw new NotImplementedException();

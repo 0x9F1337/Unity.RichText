@@ -3,11 +3,18 @@ using Unity.RichText.TextFlags.Parameters.Validators;
 
 namespace Unity.RichText.TextFlags.ParamTexts
 {
-    internal class RotateText : ITextItem
+    [TextItemIdentifier( UnityRichTextFlag.Rotate )]
+    internal class RotateText : ITextItem, IParam
     {
-        public string? Param { get; } = string.Empty;
+        public string? Param { get; private set; } = string.Empty;
 
-        public RotateText( object param )
+        public string CloseTag()
+            => "</rotate>";
+
+        public string OpenTag()
+            => $"<rotate=\"{this.Param}\">";
+
+        public void SetParam( object param )
         {
             var value = param?.ToString();
 
@@ -15,11 +22,5 @@ namespace Unity.RichText.TextFlags.ParamTexts
 
             this.Param = value;
         }
-
-        public string CloseTag()
-            => "</rotate>";
-
-        public string OpenTag()
-            => $"<rotate=\"{this.Param}\">";
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Unity.RichText.TextFlags.Texts
 {
+    [TextItemIdentifier( UnityRichTextFlag.Underline )]
     internal class UnderlineText : ITextItem
     {
         public string? Param => throw new NotImplementedException();

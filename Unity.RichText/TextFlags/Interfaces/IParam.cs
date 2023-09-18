@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Unity.RichText.TextFlags.Interfaces
 {
-    internal interface ITextItem
+    internal interface IParam
     {
-        public string OpenTag();
-        public string CloseTag();
+        public string Param { get; }
+        void SetParam(object param);
     }
 }

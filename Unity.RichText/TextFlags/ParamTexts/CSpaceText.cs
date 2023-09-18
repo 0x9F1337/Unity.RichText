@@ -3,11 +3,18 @@ using Unity.RichText.TextFlags.Parameters.Validators;
 
 namespace Unity.RichText.TextFlags.ParamTexts
 {
-    internal class CSpaceText : ITextItem
+    [TextItemIdentifier( UnityRichTextFlag.CSpace )]
+    internal class CSpaceText : ITextItem, IParam
     {
-        public string? Param { get; } = string.Empty;
+        public string? Param { get; private set; } = string.Empty;
 
-        public CSpaceText( object param )
+        public string CloseTag()
+            => "</cspace>";
+
+        public string OpenTag()
+            => $"<cspace={this.Param}>";
+
+        public void SetParam( object param )
         {
             var value = param?.ToString();
 
@@ -15,11 +22,5 @@ namespace Unity.RichText.TextFlags.ParamTexts
 
             this.Param = value;
         }
-
-        public string CloseTag()
-            => "</cspace>";
-
-        public string OpenTag()
-            => $"<cspace={this.Param}>";
     }
 }

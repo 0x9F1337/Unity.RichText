@@ -8,25 +8,24 @@ using Unity.RichText.TextFlags.Parameters.Validators;
 
 namespace Unity.RichText.TextFlags.ParamTexts
 {
-    internal class HRefText : ITextItem
+    [TextItemIdentifier( UnityRichTextFlag.Href )]
+    internal class HRefText : ITextItem, IParam
     {
-        public string? Param { get; } = string.Empty;
-
-        public HRefText( object param )
-        {
-            var value = param?.ToString();
-
-            StringValidator.Validate(value);
-
-			this.Param = value;
-
-            
-        }
+        public string? Param { get; private set; } = string.Empty;
 
         public string CloseTag()
             => "</a>";
 
         public string OpenTag()
             => $"<a href=\"{this.Param}\">";
+
+        public void SetParam( object param )
+        {
+            var value = param?.ToString();
+
+            StringValidator.Validate( value );
+
+            this.Param = value;
+        }
     }
 }

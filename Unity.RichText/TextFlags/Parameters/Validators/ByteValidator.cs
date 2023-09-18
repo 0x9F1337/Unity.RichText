@@ -10,7 +10,7 @@ namespace Unity.RichText.TextFlags.Parameters.Validators
     {
         public static void Validate( string? value )
         {
-            if ( value.StartsWith( "#" ) )
+            if ( value?.StartsWith( "#" ) ?? false )
                 value = value.Substring( 1 );
 
             if ( string.IsNullOrWhiteSpace( value ) )

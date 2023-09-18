@@ -3,11 +3,18 @@ using Unity.RichText.TextFlags.Parameters.Validators;
 
 namespace Unity.RichText.TextFlags.ParamTexts
 {
-    internal class FontWeightText : ITextItem
+    [TextItemIdentifier( UnityRichTextFlag.FontWeight )]
+    internal class FontWeightText : ITextItem, IParam
     {
-        public string? Param { get; } = string.Empty;
+        public string? Param { get; private set; } = string.Empty;
 
-        public FontWeightText( object param )
+        public string CloseTag()
+            => "</font-weight>";
+
+        public string OpenTag()
+            => $"<font-weight=\"{this.Param}\">";
+
+        public void SetParam( object param )
         {
             var value = param?.ToString();
 
@@ -15,11 +22,5 @@ namespace Unity.RichText.TextFlags.ParamTexts
 
             this.Param = value;
         }
-
-        public string CloseTag()
-            => "</font-weight>";
-
-        public string OpenTag()
-            => $"<font-weight=\"{this.Param}\">";
     }
 }
