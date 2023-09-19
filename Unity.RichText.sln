@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.RichText", "Unity.RichText\Unity.RichText.csproj", "{A60B57EF-08F1-4AF3-B5E6-D6D8A4958AE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unity.RichText", "Unity.RichText\Unity.RichText.csproj", "{A60B57EF-08F1-4AF3-B5E6-D6D8A4958AE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.RichText.Tests", "Unity.RichText.Tests\Unity.RichText.Tests.csproj", "{04AB9D44-0807-4720-AC1E-108236F981B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unity.RichText.Tests", "Unity.RichText.Tests\Unity.RichText.Tests.csproj", "{04AB9D44-0807-4720-AC1E-108236F981B0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D4461FD9-4FAB-4D1A-9558-A005067C7FCC}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
