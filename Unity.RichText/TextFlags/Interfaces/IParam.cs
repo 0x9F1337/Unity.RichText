@@ -9,6 +9,6 @@ namespace Unity.RichText.TextFlags.Interfaces
     internal interface IParam
     {
         public string Param { get; }
-        void SetParam(object param);
+        void SetParam(string? value);
     }
 }

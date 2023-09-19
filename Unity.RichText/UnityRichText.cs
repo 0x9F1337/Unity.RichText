@@ -43,14 +43,20 @@ namespace Unity.RichText
 
         public static string Nested( string value, UnityRichTextFlag modifiers, string? param = null )
         {
-            // TODO cache
             StringBuilder sb = new StringBuilder();
 
-            AddTags( sb, modifiers, param, true );
+            try
+            {
+                AddTags( sb, modifiers, param, true );
 
-            sb.Append( value );
+                sb.Append( value );
 
-            AddTags( sb, modifiers, param, false );
+                AddTags( sb, modifiers, param, false );
+            }
+            catch ( Exception ex )
+            {
+                Console.WriteLine( $"[{DateTime.Now}] Parameter \"{param?.ToString() ?? "[UNKNOWN]"}\" with modifiers \"{modifiers.ToString()}\" caused an error and will be ignored: " + ex.ToString() );
+            }
 
             return sb.ToString();
         }
@@ -71,15 +77,7 @@ namespace Unity.RichText
             StringBuilder sb = new StringBuilder();
 
             foreach ( var arg in args )
-            {
-                var modifier = arg.flag;
-
-                AddTags( sb, modifier, arg.param, true );
-
-                sb.Append( arg.value );
-
-                AddTags( sb, modifier, arg.param, false );
-            }
+                sb.Append( Nested( arg.value, arg.flag, arg.param ) );
 
             return sb.ToString();
         }
@@ -93,22 +91,15 @@ namespace Unity.RichText
 
                 if ( modifiers.HasFlag( modifier ) )
                 {
-                    try
-                    {
-                        var text = InitializeText( modifier, param );
+                    var text = InitializeText( modifier, param );
 
-                        if ( text == null )
-                            continue;
+                    if ( text == null )
+                        continue;
 
-                        if ( open )
-                            sb.Append( text.OpenTag() );
-                        else
-                            sb.Append( text.CloseTag() );
-                    }
-                    catch ( Exception ex )
-                    {
-                        Console.WriteLine( $"[{DateTime.Now}] Parameter \"{param?.ToString() ?? "[UNKNOWN]"}\" with modifiers \"{modifiers.ToString()}\" caused an error and will be ignored: " + ex.ToString() );
-                    }
+                    if ( open )
+                        sb.Append( text.OpenTag() );
+                    else
+                        sb.Append( text.CloseTag() );
                 }
             }
         }

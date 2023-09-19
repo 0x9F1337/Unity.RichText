@@ -14,10 +14,8 @@ namespace Unity.RichText.TextFlags.ParamTexts
         public string OpenTag()
             => $"<rotate=\"{this.Param}\">";
 
-        public void SetParam( object param )
+        public void SetParam( string? value )
         {
-            var value = param?.ToString();
-
             IntegerValidator.Validate( value );
 
             this.Param = value;

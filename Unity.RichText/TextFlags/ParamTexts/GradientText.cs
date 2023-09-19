@@ -14,10 +14,8 @@ namespace Unity.RichText.TextFlags.ParamTexts
         public string OpenTag()
             => $"<gradient=\"{this.Param}\">";
 
-        public void SetParam( object param )
+        public void SetParam( string? value )
         {
-            var value = param?.ToString();
-
             StringValidator.Validate( value );
 
             this.Param = value;

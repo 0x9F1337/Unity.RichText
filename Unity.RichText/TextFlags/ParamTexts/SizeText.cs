@@ -14,10 +14,8 @@ namespace Unity.RichText.TextFlags.ParamTexts
         public string OpenTag()
             => $"<size={this.Param}>";
 
-        public void SetParam( object param )
+        public void SetParam( string? value )
         {
-            var value = param?.ToString();
-
             PercentValidator.Validate( value );
 
             this.Param = value;
