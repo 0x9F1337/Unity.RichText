@@ -12,13 +12,16 @@ namespace Unity.RichText.TextFlags.ParamTexts
             => "</color>";
 
         public string OpenTag()
-            => $"<color=#{this.Param}>";
+            => $"<color={this.Param}>";
 
         public void SetParam( object param )
         {
             var value = param?.ToString();
 
             ColorValidator.Validate( value );
+
+            if ( !value?.StartsWith( "#" ) ?? false )
+                value = "#" + value;
 
             this.Param = value;
         }

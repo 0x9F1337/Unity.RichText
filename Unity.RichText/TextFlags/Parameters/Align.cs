@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Unity.RichText.TextFlags.Parameters
 {
-    internal class AlignParameter
+    public class AlignParameter
     {
         public const string Left = "left";
         public const string Right = "right";

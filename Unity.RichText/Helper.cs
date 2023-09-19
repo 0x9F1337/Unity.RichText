@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -14,7 +15,7 @@ namespace Unity.RichText
             if ( string.IsNullOrWhiteSpace( hex ) )
                 return (0, 0, 0, 255, false);
 
-            if ( !uint.TryParse( hex, out uint hexCode ) )
+            if ( !uint.TryParse( hex, System.Globalization.NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint hexCode ) )
                 return (0, 0, 0, 255, false);
 
             if ( hex.Length == 8 )

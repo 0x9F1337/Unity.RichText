@@ -13,11 +13,11 @@ namespace Unity.RichText.TextFlags.Parameters.Validators
             if (string.IsNullOrWhiteSpace(value)) 
                 throw new ArgumentException("value is null or empty.");
 
-            if ( value == AlignParameter.Left ||
-                value == AlignParameter.Right ||
-                value == AlignParameter.Center ||
-                value == AlignParameter.Justified ||
-                value == AlignParameter.Flush )
+            if (!value.Equals( AlignParameter.Left, StringComparison.OrdinalIgnoreCase) &&
+                !value.Equals( AlignParameter.Right, StringComparison.OrdinalIgnoreCase) &&
+                !value.Equals( AlignParameter.Center, StringComparison.OrdinalIgnoreCase ) &&
+                !value.Equals( AlignParameter.Justified, StringComparison.OrdinalIgnoreCase ) &&
+                !value.Equals( AlignParameter.Flush, StringComparison.OrdinalIgnoreCase ) )
                 throw new ArgumentException( $"value \"{value}\" has an unknown value. Please choose one in AlignParameter." );
         }
     }

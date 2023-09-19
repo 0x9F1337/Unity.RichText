@@ -132,5 +132,50 @@ namespace Unity.RichText.Tests
 
             Assert.Pass();
         }
+
+        [Test]
+        public void TestAlign()
+        {
+            string modified = UnityRichText.Nested(
+                ("Hello", UnityRichTextFlag.Align, TextFlags.Parameters.AlignParameter.Left),
+                ("World", UnityRichTextFlag.Align, TextFlags.Parameters.AlignParameter.Right)
+            );
+
+            Assert.That( modified, Is.EqualTo( "<align=\"left\">Hello</align><align=\"right\">World</align>" ) );
+
+            Trace.WriteLine( modified );
+
+            Assert.Pass();
+        }
+
+        [Test]
+        public void TestAllCaps()
+        {
+            string modified = UnityRichText.Nested(
+                ("Hello", UnityRichTextFlag.None),
+                ("World", UnityRichTextFlag.AllCaps)
+            );
+
+            Assert.That( modified, Is.EqualTo( "Hello<allcaps>World</allcaps>" ) );
+
+            Trace.WriteLine( modified );
+
+            Assert.Pass();
+        }
+
+        [Test]
+        public void TestColorWithBold()
+        {
+            string modified = UnityRichText.Nested(
+                ("Hello", UnityRichTextFlag.None, null),
+                ("World", UnityRichTextFlag.Bold | UnityRichTextFlag.Color, "#fcba03")
+            );
+
+            Assert.That( modified, Is.EqualTo( "Hello<b><color=#fcba03>World</color></b>" ) );
+
+            Trace.WriteLine( modified );
+
+            Assert.Pass();
+        }
     }
 }
