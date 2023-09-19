@@ -88,6 +88,9 @@ namespace Unity.RichText
         {
             foreach ( var modifier in ( open ) ? CachedFlags : CachedFlags.Reverse() )
             {
+                if ( modifier == UnityRichTextFlag.None )
+                    continue;
+
                 if ( modifiers.HasFlag( modifier ) )
                 {
                     try
