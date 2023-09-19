@@ -36,12 +36,12 @@ namespace Unity.RichText
             }
         }
 
-        public static string ToUnityNestedRichText( this string value, UnityRichTextFlag modifiers, object? param = null )
+        public static string ToUnityNestedRichText( this string value, UnityRichTextFlag modifiers, string? param = null )
         {
             return Nested( value, modifiers, param );
         }
 
-        public static string Nested( string value, UnityRichTextFlag modifiers, object? param = null )
+        public static string Nested( string value, UnityRichTextFlag modifiers, string? param = null )
         {
             // TODO cache
             StringBuilder sb = new StringBuilder();
@@ -57,7 +57,7 @@ namespace Unity.RichText
 
         public static string Nested( params (string value, UnityRichTextFlag flag)[] args )
         {
-            (string v, UnityRichTextFlag f, object? p)[] array = new (string v, UnityRichTextFlag f, object? p)[ args.Length ];
+            (string v, UnityRichTextFlag f, string? p)[] array = new (string v, UnityRichTextFlag f, string? p)[ args.Length ];
 
             int i = 0;
             foreach ( var arg in args )
@@ -66,7 +66,7 @@ namespace Unity.RichText
             return Nested( array );
         }
 
-        public static string Nested( params (string value, UnityRichTextFlag flag, object? param)[] args )
+        public static string Nested( params (string value, UnityRichTextFlag flag, string? param)[] args )
         {
             StringBuilder sb = new StringBuilder();
 
@@ -84,7 +84,7 @@ namespace Unity.RichText
             return sb.ToString();
         }
 
-        private static void AddTags( StringBuilder sb, UnityRichTextFlag modifiers, object? param, bool open )
+        private static void AddTags( StringBuilder sb, UnityRichTextFlag modifiers, string? param, bool open )
         {
             foreach ( var modifier in ( open ) ? CachedFlags : CachedFlags.Reverse() )
             {
@@ -113,7 +113,7 @@ namespace Unity.RichText
             }
         }
 
-        private static ITextItem? InitializeText( UnityRichTextFlag flag, object? param )
+        private static ITextItem? InitializeText( UnityRichTextFlag flag, string? param )
         {
             var instance = CachedTextItems[ flag ];
 
