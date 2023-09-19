@@ -124,42 +124,6 @@ namespace Unity.RichText
                 instanceWithParam.SetParam( param );
 
             return ( ITextItem )instance;
-
-
-            //return flag switch
-            //{
-            //    UnityRichTextFlag.Bold => new BoldText(),
-            //    UnityRichTextFlag.Italic => new ItalicText(),
-            //    UnityRichTextFlag.Href => new HRefText( param ),
-            //    UnityRichTextFlag.Align => new AlignText( param ),
-            //    UnityRichTextFlag.AllCaps => new AllCapsText(),
-            //    UnityRichTextFlag.CSpace => new CSpaceText( param ),
-            //    UnityRichTextFlag.Font => new FontText( param ),
-            //    UnityRichTextFlag.FontWeight => new FontWeightText( param ),
-            //    UnityRichTextFlag.Gradient => new GradientText( param ),
-            //    UnityRichTextFlag.Indent => new IndentText( param ),
-            //    UnityRichTextFlag.LineHeight => new LineHeightText( param ),
-            //    UnityRichTextFlag.LineIndent => new LineIndentText( param ),
-            //    UnityRichTextFlag.Lowercase => new LowerCaseText(),
-            //    UnityRichTextFlag.Margin => new MarginText( param ),
-            //    UnityRichTextFlag.Mark => new MarkText( param ),
-            //    UnityRichTextFlag.MSpace => new MSpaceText( param ),
-            //    UnityRichTextFlag.Nobr => new NoBreakText(),
-            //    UnityRichTextFlag.NoParse => new NoParseText(),
-            //    UnityRichTextFlag.Rotate => new RotateText( param ),
-            //    UnityRichTextFlag.Crossed => new CrossedText(),
-            //    UnityRichTextFlag.Size => new SizeText( param ),
-            //    UnityRichTextFlag.SmallCaps => new SmallCapsText(),
-            //    UnityRichTextFlag.Space => new SpaceText( param ),
-            //    UnityRichTextFlag.Sprite => new SpriteText( param ),
-            //    UnityRichTextFlag.Strikethrough => new StrikeThroughText(),
-            //    UnityRichTextFlag.Style => new StyleText( param ),
-            //    UnityRichTextFlag.Subscript => new SubscriptText(),
-            //    UnityRichTextFlag.Superscript => new SuperscriptText(),
-            //    UnityRichTextFlag.Underline => new UnderlineText(),
-            //    UnityRichTextFlag.Width => new WidthText( param ),
-            //    _ => null,
-            //};
         }
 
         private static UnityRichTextFlag GetFlagFromType( Type type )
