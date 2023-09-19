@@ -20,6 +20,9 @@ namespace Unity.RichText.TextFlags.ParamTexts
 
             ColorValidator.Validate( value );
 
+            if ( !value?.StartsWith( "#" ) ?? false )
+                value = "#" + value;
+
             this.Param = value;
         }
     }
