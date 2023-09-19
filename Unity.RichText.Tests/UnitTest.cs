@@ -1,4 +1,5 @@
 
+using NUnit.Framework.Constraints;
 using System.Diagnostics;
 
 namespace Unity.RichText.Tests
@@ -25,7 +26,7 @@ namespace Unity.RichText.Tests
 
             string modified = UnityRichText.Nested( value, UnityRichTextFlag.Bold );
 
-            Assert.AreEqual( "<b>test</b>", modified );
+            Assert.That( modified, Is.EqualTo( "<b>test</b>" ) );
 
             Trace.WriteLine( modified );
 
@@ -39,7 +40,7 @@ namespace Unity.RichText.Tests
 
             string modified = UnityRichText.Nested( value, UnityRichTextFlag.Italic );
 
-            Assert.AreEqual( "<i>test</i>", modified );
+            Assert.That( modified, Is.EqualTo( "<i>test</i>" ) );
 
             Trace.WriteLine( modified );
 
@@ -53,7 +54,7 @@ namespace Unity.RichText.Tests
 
             string modified = UnityRichText.Nested( value, UnityRichTextFlag.Bold );
 
-            Assert.AreEqual( "<b>test</b>", modified );
+            Assert.That( modified, Is.EqualTo( "<b>test</b>" ) );
 
             Trace.WriteLine( modified );
 
@@ -67,7 +68,7 @@ namespace Unity.RichText.Tests
 
             string modified = UnityRichText.Nested( value, UnityRichTextFlag.Italic );
 
-            Assert.AreEqual( "<i>test</i>", modified );
+            Assert.That( modified, Is.EqualTo( "<i>test</i>" ) );
 
             Trace.WriteLine( modified );
 
@@ -82,7 +83,7 @@ namespace Unity.RichText.Tests
 
             string modified = UnityRichText.Nested( value, UnityRichTextFlag.Bold | UnityRichTextFlag.Italic );
 
-            Assert.AreEqual( "<b><i>test</i></b>", modified );
+            Assert.That( modified, Is.EqualTo( "<b><i>test</i></b>" ) );
 
             Trace.WriteLine( modified );
 
@@ -96,7 +97,7 @@ namespace Unity.RichText.Tests
 
             string modified = UnityRichText.Nested( value, UnityRichTextFlag.Italic | UnityRichTextFlag.Bold );
 
-            Assert.AreEqual( "<b><i>test</i></b>", modified );
+            Assert.That( modified, Is.EqualTo( "<b><i>test</i></b>" ) );
 
             Trace.WriteLine( modified );
 
@@ -113,7 +114,7 @@ namespace Unity.RichText.Tests
                 ("or", UnityRichTextFlag.Italic | UnityRichTextFlag.Bold),
                 ("ld!", UnityRichTextFlag.Bold | UnityRichTextFlag.Italic) );
 
-            Assert.AreEqual( "H<i>ell</i><b>O W</b><b><i>or</i></b><b><i>ld!</i></b>", modified );
+            Assert.That( modified, Is.EqualTo( "H<i>ell</i><b>O W</b><b><i>or</i></b><b><i>ld!</i></b>" ) );
 
             Trace.WriteLine( modified );
 
@@ -125,7 +126,7 @@ namespace Unity.RichText.Tests
         {
             string modified = UnityRichText.Nested( "This is a test", UnityRichTextFlag.Href, "https://www.google.com" );
 
-            Assert.AreEqual( "<a href=\"https://www.google.com\">This is a test</a>", modified );
+            Assert.That( modified, Is.EqualTo( "<a href=\"https://www.google.com\">This is a test</a>" ) );
 
             Trace.WriteLine( modified );
 
