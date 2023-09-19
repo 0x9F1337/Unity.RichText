@@ -9,10 +9,10 @@ namespace Unity.RichText.TextFlags.ParamTexts
         public string? Param { get; private set; } = string.Empty;
 
         public string CloseTag()
-            => "</LineIndent>";
+            => "</line-indent>";
 
         public string OpenTag()
-            => $"<LineIndent={this.Param}>";
+            => $"<line-indent={this.Param}>";
 
         public void SetParam( object param )
         {
