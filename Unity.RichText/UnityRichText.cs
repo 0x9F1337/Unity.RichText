@@ -46,11 +46,11 @@ namespace Unity.RichText
             // TODO cache
             StringBuilder sb = new StringBuilder();
 
-            AddTexts( sb, modifiers, param, true );
+            AddTags( sb, modifiers, param, true );
 
             sb.Append( value );
 
-            AddTexts( sb, modifiers, param, false );
+            AddTags( sb, modifiers, param, false );
 
             return sb.ToString();
         }
@@ -74,17 +74,17 @@ namespace Unity.RichText
             {
                 var modifier = arg.flag;
 
-                AddTexts( sb, modifier, arg.param, true );
+                AddTags( sb, modifier, arg.param, true );
 
                 sb.Append( arg.value );
 
-                AddTexts( sb, modifier, arg.param, false );
+                AddTags( sb, modifier, arg.param, false );
             }
 
             return sb.ToString();
         }
 
-        private static void AddTexts( StringBuilder sb, UnityRichTextFlag modifiers, object? param, bool open )
+        private static void AddTags( StringBuilder sb, UnityRichTextFlag modifiers, object? param, bool open )
         {
             foreach ( var modifier in ( open ) ? CachedFlags : CachedFlags.Reverse() )
             {
