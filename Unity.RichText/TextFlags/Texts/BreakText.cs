@@ -8,9 +8,9 @@ namespace Unity.RichText.TextFlags.Texts
         public string? Param => throw new NotImplementedException();
 
         public string CloseTag()
-            => string.Empty;
+            => "<br>";
 
         public string OpenTag()
-            => "<br>";
+            => string.Empty;
     }
 }
